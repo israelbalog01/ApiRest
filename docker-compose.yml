@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  mariadb:
+    image: mariadb:10.5
+    container_name: mon-mariadb
+    ports:
+      - "3310:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: ma_base_de_donnees
+      MYSQL_USER: mon_utilisateur
+      MYSQL_PASSWORD: mot_de_passe
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: mon-phpmyadmin
+    ports:
+      - "8085:80"
+    environment:
+      PMA_ARBITRARY: 1
+      MYSQL_ROOT_PASSWORD: root_password
